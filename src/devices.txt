@@ -1,0 +1,4 @@
+# Enter devices below in format: <name>,<bluetooth id>
+# You can obtain bluetooth ids of your devices by running "btdiscovery -s"
+Buds+,58:A6:39:91:BB:1F
+Buds2,4C:66:A6:B0:AD:31

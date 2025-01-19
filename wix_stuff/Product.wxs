@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="cb563323-15ff-4338-8401-237b58c297f6" Name="DylanBudsTray Installer" Language="1033" Version="1.0.0.0" Manufacturer="Dylan Walker" UpgradeCode="1ddfffd3-252a-4481-81c6-e3db56f9f491">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="DylanBudsTray" />
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="MainComponent" Guid="3339b468-e673-44a8-9a9a-7692d9f80847">
+        <File Id="BudsTrayPS1" Name="buds_tray.ps1" Source="src\buds_tray.ps1" KeyPath="yes" />
+        <File Id="devicesTXT" Name="devices.txt" Source="src\devices.txt" KeyPath="no" />
+        <File Id="bt_earbudsICO" Name="bt_earbuds.ico" Source="src\bt_earbuds.ico" KeyPath="no" />
+        <File Id="bt_earbuds2ICO" Name="bt_earbuds2.ico" Source="src\bt_earbuds2.ico" KeyPath="no" />
+        <File Id="InstallScheduledTaskPS1" Name="InstallScheduledTask.ps1" Source="src\InstallScheduledTask.ps1" KeyPath="no" />
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="ProductFeature" Title="DylanBudsTray" Level="1">
+      <ComponentRef Id="MainComponent" />
+    </Feature>
+<!--
+
+    <CustomAction Id="RunInstallScheduledTask" FileKey="InstallScheduledTaskPS1" Execute="deferred" Impersonate="no" ExeCommand="&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -ExecutionPolicy Bypass -File &quot;[INSTALLFOLDER]InstallScheduledTask.ps1&quot;" Return="check" />
+
+
+    <CustomAction Id="RegisterPSCmd"
+							Property="RegisterPowerShellProperty"
+							Value="&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoLogo -NonInteractive -InputFormat None -NoProfile -File &quot;C:\damienbod\SimpleConsoleApp\CreateDirectoryAndFilesInstall.ps1&quot; &quot;arg_that_I_maybe_require_for_my_script&quot;"
+							Execute="immediate" />
+							
+
+	<CustomAction Id="RegisterWindowsService" Property="RegisterPowerShellProperty" Value="&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoLogo -NonInteractive -InputFormat None -NoProfile -ExecutionPolicy Bypass -File &quot;[INSTALLFOLDER]InstallScheduledTask.ps1&quot;" Execute="immediate" />
+<CustomAction Id="RegisterPowerShellProperty" BinaryKey="WixCA" DllEntry="CAQuietExec64" Execute="deferred" Return="check" Impersonate="no" />
+    
+--> 
+
+
+<CustomAction Id="CreateScheduledTaskId" Property="CreateScheduledTask" ExeCommand="&quot;[SystemFolder]SCHTASKS.EXE&quot; /create /tn &quot;DylanBudsTrayTask&quot; /tr &quot;cmd.exe /c start /min &quot;&quot; powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File &quot;[INSTALLFOLDER]buds_tray.ps1&quot; /sc onstart /delay 0001:00 /ru &quot;SYSTEM&quot; /rl HIGHEST /f" Execute="immediate" Impersonate="no" Return="check" />
+
+
+    <InstallExecuteSequence>
+      <Custom Action="RegisterPowerShellProperty" After="InstallFiles">NOT REMOVE</Custom>
+    </InstallExecuteSequence>
+
+  </Product>
+</Wix>

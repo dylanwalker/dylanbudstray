@@ -1,0 +1,18 @@
+1) Copy all files into %programfiles(x86)%
+
+2) Create a new task in Task Scheduler with the following:
+Triggers
+	At startup
+	Delay task for: 10 minutes
+
+Action
+	Program/Script:
+		cmd
+	Arguments:
+		/c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Program Files (x86)\DylanBudsTray\buds_tray.ps1"
+		
+		
+For the task General->Security opions:
+	Run only when the user is logged on
+	Run with the highest priveleges
+	Hidden
