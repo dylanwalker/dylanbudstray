@@ -25,16 +25,17 @@ I really wanted to make a windows .msi installer for this program, but ended up 
 - Action
 
 	- Program/Script:
-		- cmd
+		- `cmd`
 	- Arguments:
 		```
 		/c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Program Files (x86)\DylanBudsTray\buds_tray.ps1"
 		```
 				
 - For the task General->Security opions:
-	Run only when the user is logged on
-	Run with the highest priveleges
-	Hidden
+
+	- Run only when the user is logged on
+	- Run with the highest priveleges
+	- Hidden
 	
 ### How it works
 
