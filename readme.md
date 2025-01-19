@@ -7,25 +7,30 @@ I really wanted to make a windows .msi installer for this program, but ended up 
 
 
 0) Requirements:
+
  a) You must install bluetooth command line tools ( https://bluetoothinstaller.com/bluetooth-command-line-tools )
+
  b) Ensure that you can run powershell scripts
 
 
 1) Copy all files from .\src into %programfiles(x86)%\DylanBudsTray
 
 2) Create a new task in Task Scheduler with the following:
-Triggers
-	At startup
-	Delay task for: 10 minutes
 
-Action
-	Program/Script:
-		cmd
-	Arguments:
-		/c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Program Files (x86)\DylanBudsTray\buds_tray.ps1"
-		
-		
-For the task General->Security opions:
+- Triggers
+
+	- At startup
+	- Delay task for: 10 minutes
+
+- Action
+
+	- Program/Script:
+		- cmd
+	- Arguments:
+		```
+		/c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Program Files (x86)\DylanBudsTray\buds_tray.ps1"```
+				
+- For the task General->Security opions:
 	Run only when the user is logged on
 	Run with the highest priveleges
 	Hidden
