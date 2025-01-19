@@ -1,5 +1,5 @@
 # DylansBudTray
-![DylanBudsTray Screenshot](.\other\DylansBudTray_screenshot.png)
+![DylanBudsTray Screenshot](./other/DylansBudTray_screenshot.png)
 DylanBudsTray is a windows system tray to facilitate bluetooth quick connect, because I use more than one pair of earbuds on multiple devices and got sick of waiting for windows to discover all the bluetooth devices just to click on the one I want to connect. With this tool you can right click on the system tray and select which bluetooth device you want to connect.
 
 
