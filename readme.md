@@ -8,9 +8,9 @@ I really wanted to make a windows .msi installer for this program, but ended up 
 
 0) Requirements:
 
- a) You must install bluetooth command line tools ( https://bluetoothinstaller.com/bluetooth-command-line-tools )
+ 	a) You must install bluetooth command line tools ( https://bluetoothinstaller.com/bluetooth-command-line-tools )
 
- b) Ensure that you can run powershell scripts
+ 	b) Ensure that you can run powershell scripts
 
 
 1) Copy all files from .\src into %programfiles(x86)%\DylanBudsTray
