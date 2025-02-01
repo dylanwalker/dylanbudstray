@@ -5,10 +5,13 @@
 DylanBudsTray is a windows system tray to facilitate bluetooth quick connect, because I use more than one pair of earbuds on multiple devices and got sick of waiting for windows to discover all the bluetooth devices just to click on the one I want to connect. With this tool you can right click on the system tray and select which bluetooth device you want to connect.
 
 
-
 ### How to Install
-I really wanted to make a windows .msi installer for this program, but ended up spending way more time trying to get that working than writing the utility itself. So manual installation instructions follow below:
 
+Just ensure you have installed  [bluetooth command line tools](https://bluetoothinstaller.com/bluetooth-command-line-tools) and then download the executable installer `dylanbudstray.exe` from the release page and run.  
+
+
+### How to Install Manually
+the installation consists of ensuring you have the required prerequisites, copying some files and creating a scheduled task to start the system tray on startup:
 
 0) Requirements:
 
