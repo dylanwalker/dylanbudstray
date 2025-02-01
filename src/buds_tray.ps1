@@ -1,9 +1,19 @@
 # This script should be executed with the following:
 # PowerShell.exe -ExecutionPolicy Bypass -file '\path\to\buds_tray.ps1'
 
+
+function Get-InstallPathFromRegistry {
+    try {
+        $installPath = Get-ItemPropertyValue -Path "HKLM:SYSTEM\CurrentControlSet\Control\Session Manager\Environment" -Name "DYLANBUDSTRAY_PATH" -ErrorAction Stop
+    } catch {
+        $programFilesX86 = [System.Environment]::GetEnvironmentVariable("ProgramFiles(x86)")
+        $installPath = "$programFilesX86\DylanBudsTray" # Default installation path
+    }
+    return $installPath
+}
+
 # Path specific file references
-$programFilesX86 = [System.Environment]::GetEnvironmentVariable("ProgramFiles(x86)")
-$installPath = "$programFilesX86\DylanBudsTray"
+$installPath = Get-InstallPathFromRegistry
 $deviceFile = "$installPath\devices.txt"
 $iconPath = "$installPath\bt_earbuds2.ico"
 
