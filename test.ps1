@@ -1,1 +1,0 @@
-Set-Content -Path "C:\Users\dwalker\Downloads\DylanBudsTray\done.txt" -Value "started script"
