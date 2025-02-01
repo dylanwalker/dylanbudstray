@@ -10,8 +10,8 @@ DylanBudsTray is a windows system tray to facilitate bluetooth quick connect, be
 Just ensure you have installed  [bluetooth command line tools](https://bluetoothinstaller.com/bluetooth-command-line-tools) and then download the executable installer `dylanbudstray.exe` from the release page and run.  
 
 
-### How to Install Manually
-the installation consists of ensuring you have the required prerequisites, copying some files and creating a scheduled task to start the system tray on startup:
+### Or if you'd rather install manually
+The installation consists of ensuring you have the required prerequisites, copying some files and creating a scheduled task to start the system tray on startup:
 
 0) Requirements:
 
