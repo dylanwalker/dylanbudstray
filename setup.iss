@@ -18,9 +18,6 @@ Source: "src\devices.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "src\bt_earbuds.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "src\bt_earbuds2.ico"; DestDir: "{app}"; Flags: ignoreversion
 
-[Registry]
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: string; ValueName: "DYLANBUDSTRAY_PATH"; ValueData: "{app}"; Flags: preservestringtype uninsdeletevalue
-
 
 [Run]
 //Filename: "{cmd}"; Parameters: "/C schtasks /create /tn ""DylanBudsTray"" /tr ""\""powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File ""{app}\buds_tray.ps1""\"""" /sc onlogon /rl highest /f"; Flags: runhidden
