@@ -1,10 +1,12 @@
+#define MyAppVersion "1.0.0";
+
 [Setup]
 AppName=DylanBudsTray
-AppVersion=1.0.0
+AppVersion={#MyAppVersion}
 AppVerName=DylanBudsTray
 DefaultDirName={commonpf32}\DylanBudsTray
 DefaultGroupName=DylanBudsTray
-OutputBaseFilename=dylanbudstray
+OutputBaseFilename="dylanbudstray_v{#MyAppVersion}_installer"
 ArchitecturesInstallIn64BitMode=x64compatible
 Compression=lzma
 SolidCompression=yes
@@ -20,8 +22,7 @@ Source: "src\bt_earbuds2.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 
 [Run]
-//Filename: "{cmd}"; Parameters: "/C schtasks /create /tn ""DylanBudsTray"" /tr ""\""powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File ""{app}\buds_tray.ps1""\"""" /sc onlogon /rl highest /f"; Flags: runhidden
-Filename: "schtasks.exe"; Parameters: "/Create /TN ""DylanBudsTray"" /TR ""powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File {app}\buds_tray.ps1"" /SC onlogon /rl highest /f"; Flags: runhidden
+Filename: "schtasks.exe"; Parameters: "/Create /tn ""DylanBudsTray"" /tr ""cmd /C start /min \""\"" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File \""{app}\buds_tray.ps1\"""" /sc onlogon /rl highest /f"; Flags: runhidden
 Filename: "powershell.exe"; Parameters: "-ExecutionPolicy Bypass -File ""{app}\buds_tray.ps1"""; WorkingDir: {win}; Flags: shellexec runhidden
 
 [UninstallRun]
